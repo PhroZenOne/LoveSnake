@@ -64,6 +64,7 @@ function Player:grow(i)
 end
 
 function Player:point(i)
+	playSound("beep")
 	self.gamePoints = self.gamePoints + i
 end
 

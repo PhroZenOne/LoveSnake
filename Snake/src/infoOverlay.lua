@@ -10,7 +10,7 @@ function InfoOverlay:draw()
 		multi line comments like this gets extra newline chars included. Bug in love2d or wrong encoding here?
 		Anyway this is why the infoText below is a looong one liner.. 
 	]]--
-	local infoText = " Hello! And welcome to yet another snake clone.\n THE BIG DIFFERENCE in this game versus regular snake is that the\nwinner is the one that makes as few moves (changes in direction)\nas possible while still getting 100 points! GL HF!"
+	local infoText = " Hello! And welcome to yet another snake clone.\n THE BIG DIFFERENCE in this game versus regular snake is that the\nwinner is the one that makes as few moves (changes in direction)\nas possible while still getting " .. settings.pointsToWinLimit .. " points! GL HF!"
 	love.graphics.print(infoText, self.x + 200, self.y + 100)
 
 	local spacing = 30;

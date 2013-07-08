@@ -1,4 +1,11 @@
 
+function playSound(src)
+	if not sound[src]:isStopped() then
+		sound[src]:rewind()
+	end
+	love.audio.play(sound[src])
+end
+
 -- Create a new class that inherits from a base class taken from
 -- http://lua-users.org/wiki/InheritanceTutorial
 function inheritsFrom( baseClass )

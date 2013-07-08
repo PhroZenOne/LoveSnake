@@ -1,11 +1,12 @@
 local Menu = {}
 local MenuItem = {}
+
 ------------------------------
 -- Menu Items --
 ------------------------------
 
 function MenuItem:new(text, pos, height, width)
-	o = {}
+	local o = {}
 	o.text = text
 	o.pos = pos
 	o.buttonHeight = height
@@ -14,8 +15,8 @@ function MenuItem:new(text, pos, height, width)
 	o.selectable = false
 	o.disabled = false
 	o.maxTextLength = 10
-	setmetatable(o, self)
 	self.__index = self
+	setmetatable(o, self)
 	return o
 end
 
@@ -85,7 +86,7 @@ function MenuItem:draw()
 	love.graphics.rectangle("fill", self.pos.x, self.pos.y, self.buttonWidth, self.buttonHeight)
 	love.graphics.setColor(text)
 	if self.selected then
-		love.graphics.setLine(3, "rough") 
+		love.graphics.setLine(3, "rough")
 		love.graphics.rectangle("line", self.pos.x+2, self.pos.y+2, self.buttonWidth-2, self.buttonHeight-2)
 		love.graphics.setLine(1, "rough")
 	end
@@ -261,6 +262,7 @@ function Menu:keypressed(key)
 end
 
 function Menu:draw()
+
 	love.graphics.setColor(48, 156, 225)
 	love.graphics.push()
 	love.graphics.translate(self.x, self.y)
@@ -339,7 +341,7 @@ end
 function Menu:enterHighScore(players, moves)
 	backFunc = nil
 	forwardFunc = nil
-	
+
 	local scoreList = data.highScore[players];
 	local newHighScore = false
 

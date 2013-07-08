@@ -28,6 +28,7 @@ function love.load()
 	backgroundImage = love.graphics.newImage("images/background.png")
 	data = require "data" --hold the calculated tilesize etc.
 	input = require  "input" -- handles game user input.
+	sound = require "sound"
 	bigfont = love.graphics.newFont(50)
 	smallfont = love.graphics.newFont(20)
 	
