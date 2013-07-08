@@ -10,7 +10,9 @@ local ItemTypes = {
 			if player.eatAllPoints == 0 then
 		 		player:die()
 		 		return true
-		 	else player:point(settings.wall.points)
+		 	else 
+		 		
+		 		player:point(settings.wall.points)
 		 		player:eatAll(-1)
 		 		player:grow(settings.wall.grow)
 		 		return false

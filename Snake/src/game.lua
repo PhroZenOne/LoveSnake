@@ -132,6 +132,7 @@ function Game:movePlayers(map)
 	end
 	if self.totalPoints >= settings.pointsToWinLimit then
 		self.stopGame = true
+		playSound("win")
 		self.overlay = WinOverlay:new(data.offset.x1, data.offset.y1, data.screenSize.width, data.screenSize.height)
 		self.overlay:setMoves(#self.players, self.totalMoves)
 	end

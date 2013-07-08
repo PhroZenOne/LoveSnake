@@ -41,6 +41,7 @@ function love.load()
 	Player = require "player"
 	Game = require  "game"
 	Menu = require "menu"
+	Map = require "map"
 	
 	-- setup
 	data.loadHighScore()	
@@ -52,7 +53,7 @@ function love.load()
 end
 
 function startGame(numberOfPlayers)
-	map = dofile "map.lua" -- dofile instead of require; if the player restarts we do a new read from map.lua
+	map = Map:new(settings.mapSize.x, settings.mapSize.y)
 	game = Game:new(numberOfPlayers)
 	currentState = game
 end
@@ -66,6 +67,7 @@ end
 function love.mousepressed(x, y, button)
 	-- first handle back and forward buttons (offscreen)
 	if y > (data.screenSize.height + data.offset.y1) then
+		playSound("menu")
 		if x > (data.screenSize.width + (data.offset.x1 * 2)) / 2 and backFunc then
 			backFunc()
 		elseif forwardFunc then

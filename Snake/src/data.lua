@@ -32,7 +32,7 @@ data.highScore = { -- these are the default values, will overridden by highscore
 	{
 		{moves = 75, nick = "Duke Nukem"},
 		{moves = 150, nick = "Lara Croft"},
-		{moves = 300, nick = "Gorgon Freeman"},
+		{moves = 300, nick = "Gordon Freeman"},
 		{moves = 400, nick = "Pac-man"},
 		{moves = 500, nick = "Link"}
 	},

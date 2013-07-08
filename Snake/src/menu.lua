@@ -180,6 +180,7 @@ function MenuItemStringInput:keyDisabled(key)
 
 	return table.contains(keyDisable, key)
 end
+
 ------------------------------
 -- Menu --
 ------------------------------

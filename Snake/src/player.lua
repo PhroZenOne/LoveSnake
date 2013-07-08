@@ -52,6 +52,7 @@ function Player:setPosition(dir)
 end
 
 function Player:die()
+	playSound("lose")
 	self.alive = false
 end
 
@@ -64,7 +65,7 @@ function Player:grow(i)
 end
 
 function Player:point(i)
-	playSound("beep")
+	playSound("point")
 	self.gamePoints = self.gamePoints + i
 end
 
