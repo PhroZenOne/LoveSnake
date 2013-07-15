@@ -9,17 +9,8 @@ end
 -- Create a new class that inherits from a base class taken from
 -- http://lua-users.org/wiki/InheritanceTutorial
 function inheritsFrom( baseClass )
-    -- Create the table and metatable representing the class.
     local new_class = {}
-    local class_mt = { __index = new_class }
-    function new_class:create()
-        local newinst = {}
-        setmetatable( newinst, class_mt )
-        return newinst
-    end
-    if baseClass then
-        setmetatable( new_class, { __index = baseClass } )
-    end
+    setmetatable( new_class, { __index = baseClass } )
     return new_class
 end
 

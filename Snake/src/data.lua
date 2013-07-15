@@ -2,7 +2,7 @@ local data = {}
 
 --[[
  the numbers 64, 964, 949 and 94 corresponds to pixel position on 
- screen for the window so that the game fits to the background image.
+ screen so that the game board fits the background image.
  (left, right, bottom and top).
   ]]--
 
@@ -37,7 +37,7 @@ data.highScore = { -- these are the default values, will overridden by highscore
 		{moves = 500, nick = "Link"}
 	},
 	{
-		{moves = 75, nick = "Beavis & butthead"},
+		{moves = 75, nick = "Beavis & Butthead"},
 		{moves = 150, nick = "Tom & Jerry"},
 		{moves = 300, nick = "Batman & Robin"},
 		{moves = 400, nick = "M & Ms"},

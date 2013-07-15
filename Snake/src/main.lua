@@ -1,6 +1,6 @@
 function love.load()
 	require "utils"
-	
+
 	settings = {
 		mapSize = {
 			x = 50,
@@ -31,22 +31,25 @@ function love.load()
 	sound = require "sound"
 	bigfont = love.graphics.newFont(50)
 	smallfont = love.graphics.newFont(20)
-	
+	map = nil -- populated in startGame
+
+
 	-- Global "classes"
+	package.path = './classes/?.lua;' .. package.path
 	Overlay = require "overlay" -- overlay class
 	InfoOverlay = require "infoOverlay"
 	GameOverOverlay = require "gameOverOverlay"
 	WinOverlay = require "winOverlay"
 	Items = require "items" -- list if items on the map
 	Player = require "player"
-	Game = require  "game"
-	Menu = require "menu"
+	Game = require  "game" -- Implements mousepressed, keypressed, draw and update
+	Menu = require "menu" -- Implements mousepressed, keypressed, draw and update
 	Map = require "map"
-	
+
 	-- setup
-	data.loadHighScore()	
+	data.loadHighScore()
 	love.graphics.setLine(1, "rough") -- default "smooth" makes everything blurry. :(
-	
+
 	menu = Menu:new(data.offset.x1, data.offset.y1, data.screenSize.width, data.screenSize.height)
 	menu:setHomePage()
 	currentState = menu
@@ -59,29 +62,33 @@ function startGame(numberOfPlayers)
 end
 
 function love.draw()
-	love.graphics.setColor(255,255,255,255)
-	love.graphics.draw(backgroundImage)
-	currentState:draw()
+	if(currentState) then
+		love.graphics.setColor(255,255,255,255)
+		love.graphics.draw(backgroundImage)
+		currentState:draw()
+	end
 end
 
 function love.mousepressed(x, y, button)
-	-- first handle back and forward buttons (offscreen)
-	if y > (data.screenSize.height + data.offset.y1) then
-		playSound("menu")
-		if x > (data.screenSize.width + (data.offset.x1 * 2)) / 2 and backFunc then
-			backFunc()
-		elseif forwardFunc then
-			forwardFunc()
+	if(currentState) then
+		-- first handle back and forward buttons (offscreen)
+		if y > (data.screenSize.height + data.offset.y1) then
+			playSound("menu")
+			if x > (data.screenSize.width + (data.offset.x1 * 2)) / 2 and backFunc then
+				backFunc()
+			elseif forwardFunc then
+				forwardFunc()
+			end
 		end
+		currentState:mousepressed(x, y, button)
 	end
-	
-	currentState:mousepressed(x, y, button)
 end
 
+
 function love.keypressed(key)
-	currentState:keypressed(key)
+	if(currentState) then currentState:keypressed(key) end
 end
 
 function love.update(dt)
-	currentState:update(dt)
+	if(currentState) then currentState:update(dt) end
 end
