@@ -36,15 +36,15 @@ function love.load()
 
 	-- Global "classes"
 	package.path = './classes/?.lua;' .. package.path
-	Overlay = require "overlay" -- overlay class
-	InfoOverlay = require "infoOverlay"
-	GameOverOverlay = require "gameOverOverlay"
-	WinOverlay = require "winOverlay"
-	Items = require "items" -- list if items on the map
-	Player = require "player"
-	Game = require  "game" -- Implements mousepressed, keypressed, draw and update
-	Menu = require "menu" -- Implements mousepressed, keypressed, draw and update
-	Map = require "map"
+	Overlay = require "classes.overlay" -- overlay class
+	InfoOverlay = require "classes.infoOverlay"
+	GameOverOverlay = require "classes.gameOverOverlay"
+	WinOverlay = require "classes.winOverlay"
+	Items = require "classes.items" -- list if items on the map
+	Player = require "classes.player"
+	Game = require  "classes.game" -- Implements mousepressed, keypressed, draw and update
+	Menu = require "classes.menu" -- Implements mousepressed, keypressed, draw and update
+	Map = require "classes.map"
 
 	-- setup
 	data.loadHighScore()
